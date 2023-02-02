@@ -1,48 +1,41 @@
 const mongoose = require('mongoose');
 
-//User Schema
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
+
     name: {
         type: String,
-
+        required: true,
     },
-
     email: {
         type: String,
-
+        required: true,
     },
-
     password: {
         type: String,
-
+        required: true,
     },
-
-    confirmPassword: {
-        type: String,
-
-    },
-
-    //admin or not
-    role: {
+    isAdmin: {
         type: Boolean,
-        default: false,
+        required: true,
     },
-
-    myReviews: [{
-
-        from: String,  //email
-        reviews: String,
-    }],
-
-    toReview: [{
-        to: String, //email
-        review: String,
-    }],
-
+    to: [     // i have to review whom
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        }
+    ],
+    from: [    // recieved review from another people
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Review',
+        }
+    ]
 
 }, {
-    timestamps: true
-})
+    timestamps: true,
+});
 
-const user = mongoose.model('User', UserSchema);
-module.exports = user;
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;

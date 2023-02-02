@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/login.css">
 <!-- Main Content -->
 	<div class="container-fluid">
-		<div class="row main-content bg-success text-center">
+		<div style="margin: 1em auto;" class="row main-content bg-success text-center">
 			<div class="col-md-4 text-center company__info">
 				<span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
 				<h4 class="company_title"><i>Company Name Logo</i></h4>
@@ -10,29 +10,33 @@
 			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
 				<div class="container-fluid">
 					<div class="row">
-						<h2>Log In</h2>
+						<h2>Register Here</h2>
 					</div>
 					<div class="row">
 						<form control="" class="form-group">
 							<div class="row">
-                                <input type="email" id="email" name="email" class="form__input" placeholder="Enter Email"/>
+								<input type="text" name="username" id="username" class="form__input" placeholder="Username">
 							</div>
 							<div class="row">
-                                <input type="password" id="password" name="password" class="form__input" placeholder="Enter Password"/>
+								<input type="text" name="email" id="username" class="form__input" placeholder="Email">
 							</div>
 							<div class="row">
-								<input type="submit" value="Log In" class="btn">
+								<input type="password" name="password" id="password" class="form__input" placeholder="Password">
+							</div>
+							<div class="row">
+								<input type="password" name="password2" id="password" class="form__input" placeholder="Confirm Password">
+							</div>
+							<div class="row">
+								<input type="submit" value="Register" class="btn">
 							</div>
 						</form>
 					</div>
 					<div class="row">
-						<p>Don't have an account? <a href="/users/register">Register Here</a></p>
+						<p>Have An Account? <a href="/users/login">Log In</a></p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Footer -->
-	<div class="container-fluid text-center footer">
-		Coded &hearts; by <a href="https://divyagaurav21.github.io/my-portfolio/" target="_blank">Divya Gaurav</a></p>
-	</div>
+	

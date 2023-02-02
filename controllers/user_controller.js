@@ -5,4 +5,7 @@ module.exports.home = (req, res) => {
 module.exports.login = (req, res) => {
     res.render('../views/login.ejs')
 }
+module.exports.register = (req, res) => {
+    res.render('../views/register')
+}
 
