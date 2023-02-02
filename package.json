@@ -1,0 +1,14 @@
+{
+  "name": "employee-review-system",
+  "version": "1.0.0",
+  "description": "give review to each other",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Divya Gaurav",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
