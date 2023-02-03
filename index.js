@@ -21,6 +21,13 @@ app.use(express.static('./assets'));
 app.use(expressLayouts);
 
 
+//_______________for getting form data_____________________//
+// app.use(express.urlencoded());
+const bodyParser = require('body-parser');
+
+// parse application/form-urlencoded, basically can only parse incoming Request Object if strings or arrays
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 app.use('/', require('./routes/index'));
 
