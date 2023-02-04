@@ -6,13 +6,26 @@ module.exports.home = (req, res) => {
 }
 
 module.exports.login = (req, res) => {
-    res.render('login')
+    if (req.isAuthenticated()) {
+        return res.redirect('/');
+    }
+    return res.render('login', {
+        title: "Login || ERS"
+    });
 }
 module.exports.register = (req, res) => {
-    res.render('register')
+    if (req.isAuthenticated()) {
+        return res.redirect('/');
+    }
+    return res.render('register', {
+        title: "SignUp || ERS"
+    });
 }
+
+
+//----------------Controller for Creating new User----------------//
 module.exports.createUser = async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     try {
         if (req.body.password != req.body.password2) {
             console.log("password did not match");
@@ -35,10 +48,16 @@ module.exports.createUser = async (req, res) => {
             })
             return res.redirect('/users/login');
         }
-
+        //______________If try Block create Error_______________//
     } catch (error) {
         console.log(`error while creating User ${error}`);
         return res.redirect('register')
     }
+}
+
+// -----------------Creating Session of User--------------------//
+module.exports.createSession = function (req, res) {
+    // console.log(req.body);
+    return res.redirect('/');
 }
 
