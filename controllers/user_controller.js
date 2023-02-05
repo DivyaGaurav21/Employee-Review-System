@@ -10,8 +10,15 @@ module.exports.login = (req, res) => {
     });
 }
 module.exports.register = (req, res) => {
+    if (req.isAuthenticated() && req.user.isAdmin) {
+        return res.render('register', {
+            title: "SignUp || ERS"
+        });
+    }
     if (req.isAuthenticated()) {
-        return res.redirect('/');
+        res.render('home', {
+            title: "Home || ERS"
+        })
     }
     return res.render('register', {
         title: "SignUp || ERS"
