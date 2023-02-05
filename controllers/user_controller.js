@@ -1,10 +1,6 @@
 const User = require('../models/user')
 const Review = require('../models/review')
 
-module.exports.home = (req, res) => {
-    res.send("Controller")
-}
-
 module.exports.login = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect('/');
@@ -46,6 +42,7 @@ module.exports.createUser = async (req, res) => {
                 isAdmin: false,
                 password: req.body.password
             })
+            console.log('User created successfully');
             return res.redirect('/users/login');
         }
         //______________If try Block create Error_______________//
@@ -61,3 +58,31 @@ module.exports.createSession = function (req, res) {
     return res.redirect('/');
 }
 
+
+// --------------controller for logout user-------------------//
+module.exports.destroySession = (req, res , done) => {
+    req.logout((err) => {
+        if (err) {
+            return done(err);
+        }
+    });
+    console.log('Logeed Out');
+    return res.redirect('/users/login');
+}
+
+
+module.exports.home = (req, res) => {
+    console.log(req.user);
+    if (!req.isAuthenticated()) {
+        console.log("not logged in");
+        return res.redirect('/users/login');
+    }
+
+    // try {
+    //     let user = await User.findById(req.user.id);
+    // }
+
+    res.render('home', {
+        title: "Home || ERS"
+    })
+}

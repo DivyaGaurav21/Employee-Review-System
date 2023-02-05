@@ -19,13 +19,13 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    to: [     // i have to review whom
+    userToReview: [     // i have to review whom
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
         }
     ],
-    from: [    // recieved review from another people
+    RecievedReviewfrom: [    // recieved review from another people
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Review',

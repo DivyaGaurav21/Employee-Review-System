@@ -9,7 +9,7 @@ const userController = require('../controllers/user_controller')
 router.use('/login', userController.login);
 router.get('/register', userController.register);
 
-// router.get('/logout', userController.destroySession);
+router.get('/logout', userController.destroySession);
 
 router.post('/create-user', userController.createUser);
 

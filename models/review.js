@@ -6,11 +6,11 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    from: {
+    reviewFrom: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    to: {  // recieved review from another people
+    reviewTo: {  // recieved review from another people
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     }

@@ -1,23 +1,23 @@
 <link rel="stylesheet" href="/css/nav.css">
-<nav class="nav d-flex justify-content-between">
+<nav class="nav d-flex justify-content-between align-items-center">
 
     <div>
         <a class="nav-link active text-light" aria-current="page" href="/"><i>Employee Review System</i></a>
     </div>
 
-    <div class="d-flex">
+    <div class="d-flex justify-content-between align-items-center">
 
         <% if(locals.user && !locals.user.isAdmin){ %>
-            <a class="nav-link text-light" href="/users/logout">Log Out</a>
             <a class="nav-link text-light" href="#"><%= user.name %></a>
+            <a class="nav-link text-light" href="/users/logout"><span>Log Out</span></a>
         <% }else if(locals.user && locals.user.isAdmin){ %>
-            <a class="nav-link text-light" href="/admin/admin-page">Assign Work</a>
-            <a class="nav-link text-light" href="/admin/view-employees">Employees</a>
-            <a class="nav-link text-light" href="/users/register">Register</a>
-            <a class="nav-link text-light" href="/users/logout">Log Out</a>
+            <a class="nav-link text-light" href="/admin/admin-page"><span>Assign Work</span></a>
+            <a class="nav-link text-light" href="/admin/view-employees"><span>Employees</span></a>
+            <a class="nav-link text-light" href="/users/register"><span>Register</span></a>
+            <a class="nav-link text-light" href="/users/logout"><span>Log Out</span></a>
         <% }else{ %>
-            <a class="nav-link text-light" href="/users/login">Log In</a>
-            <a class="nav-link text-light" href="/users/register">Register</a>
+            <a class="nav-link text-light" href="/users/login"><span>Log In</span></a>
+            <a class="nav-link text-light" href="/users/register"><span>Register</span></a>
         <% } %>  
 
     </div>
