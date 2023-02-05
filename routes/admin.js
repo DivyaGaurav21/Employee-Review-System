@@ -13,7 +13,7 @@ router.post('/set-Reviewers', passport.checkAuthentication, adminController.setR
 
 
 // make new admin to employee
-// router.post('/newAdmin', passport.checkAuthentication, adminController.newAdmin);
+router.post('/newAdmin', passport.checkAuthentication, adminController.newAdmin);
 
 // for viewing all employees list
 router.get('/view-employees', passport.checkAuthentication, adminController.viewEmployees);

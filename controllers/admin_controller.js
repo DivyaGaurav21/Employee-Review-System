@@ -42,6 +42,38 @@ module.exports.setReviewrs = (req, res) => {
 }
 
 
+// make new admin admin to an employee
+module.exports.newAdmin = async function (req, res) {
+    try {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/users/login');
+        }
+        if (req.user.isAdmin == true) {
+            let employee = await User.findById(req.body.newAdmin);
+
+            if (!employee) {
+                return res.redirect('back');
+            }
+
+            if (employee.isAdmin == true) {
+                return res.redirect('back');
+            }
+
+            if (employee.isAdmin == false) {
+                employee.isAdmin = true,
+                    employee.save();
+
+                return res.redirect('/admin/admin-page');
+            }
+        }
+    } catch (err) {
+        console.log("Error", err);
+        return;
+    };
+
+};
+
+
 // views employees
 module.exports.viewEmployees = async function (req, res) {
     try {
