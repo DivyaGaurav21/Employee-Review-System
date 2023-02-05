@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/admin.css">
+<h5 class="text-center mt-3 text-colr">All Employees List</h5>
+
+<div class="container mt-4">
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="text-colr">
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Admin</th>
+                <th scope="col">delete Button</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% for(let i=0;i < employees.length;i++){ %>
+                <tr>
+                <td><%=employees[i].name %></td>
+                <td><%=employees[i].email %></td>
+                <td><%=employees[i].password %></td>
+                <td><%=employees[i].isAdmin %></td>
+                <td>
+                    <a href="/admin/delete-employee/<%=employees[i]._id%>" class="btn btn-bg">
+                        Delete
+                    </a>
+                </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+</div>

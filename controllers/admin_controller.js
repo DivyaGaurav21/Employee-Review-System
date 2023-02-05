@@ -1,4 +1,4 @@
-const User = require("../models/users");
+const User = require("../models/user");
 const Review = require("../models/review");
 
 
@@ -32,4 +32,58 @@ module.exports.adminPage = async function (req, res) {
             }
         }
     }
+};
+
+
+module.exports.setReviewrs = (req, res) => {
+    // i will be back....... 
+    console.log('continued.........');
+    res.send('yeah good')
+}
+
+
+// views employees
+module.exports.viewEmployees = async function (req, res) {
+    try {
+        if (req.isAuthenticated()) {
+            if (req.user.isAdmin) {
+                let employees = await User.find({});
+
+                if (employees) {
+                    return res.render('employee', {
+                        title: "Employee || ERS",
+                        employees: employees,
+                    });
+                }
+            } else {
+                console.log("user is not authorized check list of Employees");
+                return res.redirect('/');
+            }
+        } else {
+            console.log("user not authenticated");
+            return res.redirect("/users/login");
+        }
+    } catch (err) {
+        console.log("Error", err);
+        return;
+    }
+};
+
+
+
+// delete employee
+module.exports.deleteEmployee = async function (req, res) {
+    try {
+
+        if (req.isAuthenticated()) {
+            if (req.user.isAdmin) {
+                await User.deleteOne({ _id: req.params.id });
+                return res.redirect('/admin/view-employees');
+            }
+        }
+    } catch (err) {
+        console.log("Error", err);
+        return;
+    }
+
 };

@@ -72,7 +72,7 @@ module.exports.destroySession = (req, res , done) => {
 
 
 module.exports.home = (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     if (!req.isAuthenticated()) {
         console.log("not logged in");
         return res.redirect('/users/login');
