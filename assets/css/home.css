@@ -1,0 +1,31 @@
+.text-colr{
+    color: rgb(0, 120, 175);
+}
+.small-text{
+    margin-top: -100px;
+}
+#body-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.home-box{
+    width: 55%;
+    height:fit-content;
+    /* background-color: aqua; */
+    text-align: center;
+}
+.review-box{
+    width: 95%;
+    height: fit-content;
+    min-height: 140px;
+    border: 1px solid rgb(0, 120, 175);
+    border-radius: 10px;
+}
+@media screen and (max-width:600px) {
+    .home-box{
+        width: 98%;
+    }
+}
