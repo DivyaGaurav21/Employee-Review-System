@@ -35,10 +35,33 @@ module.exports.adminPage = async function (req, res) {
 };
 
 
-module.exports.setReviewrs = (req, res) => {
-    // i will be back....... 
-    console.log('continued.........');
-    res.send('yeah good')
+module.exports.setReviewrs = async (req, res) => {
+    try {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/users/login');
+        } else {
+            let employee = await User.findById(req.user.id);
+
+            if (!employee.isAdmin) {
+                console.log("you are not Admin");
+                return res.redirect('/');
+            } else if (req.body.setReviewer == req.body.getReviewer) {
+                return res.redirect('back');
+            }
+            else {
+                let reviewerUser = await User.findById(req.body.setReviewer);
+                let recipientUser = await User.findById(req.body.getReviewer);
+                reviewerUser.userToReview.push(recipientUser);
+                reviewerUser.save();
+                recipientUser.RecievedReviewfrom.push(reviewerUser);
+                recipientUser.save();
+                return res.redirect('back');
+            }
+        }
+    } catch (error) {
+        console.log('error in setting reviewer', error);
+        return;
+    }
 }
 
 
