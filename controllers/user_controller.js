@@ -78,18 +78,45 @@ module.exports.destroySession = (req, res , done) => {
 }
 
 
-module.exports.home = (req, res) => {
-    // console.log(req.user);
-    if (!req.isAuthenticated()) {
-        console.log("not logged in");
-        return res.redirect('/users/login');
+module.exports.home =async (req, res) => {
+    try {
+        if (!req.isAuthenticated()) {
+            console.log("not logged in");
+            return res.redirect('/users/login');
+        }
+
+        let user = await User.findById(req.user.id);
+        let review = await Review.find({ reviewer: req.user.id });
+
+        let recipients = [];
+
+        for (let i = 0; i < user.userToReview.length; i++){
+            let x = await User.findById(user.userToReview[i]);
+            recipients.push(x);
+        }
+
+        let reviews = [];
+
+        for (let i = 0; i < review.length; i++){
+            let x = await User.findById(review[i].RecievedReviewfrom);
+
+            let curr_review = {
+                name: x.name,
+                review: review[i].review,
+                updated: review[i].updatedAt,
+            };
+            reviews.push(curr_review);
+        }
+        res.render('home', {
+            title: "Home || ERS",
+            recipients: recipients,
+            reviews: reviews,
+            user: user,
+        })
+
+    } catch (error) {
+        console.log(error);
+        return;
     }
 
-    // try {
-    //     let user = await User.findById(req.user.id);
-    // }
-
-    res.render('home', {
-        title: "Home || ERS"
-    })
 }

@@ -14,6 +14,27 @@
                 </h5>
             <div class="review-box">
 
+                <% for(let r of recipients){ %> 
+                <div class="card no-b ">
+                    <div class="card-body">
+                      <h5 class="card-title">To:<%= r.name %></h5>
+                      <form action="/reviews/newReview/<%= r._id %>" method="get">
+                        <textarea
+                        class="form-control"
+                        placeholder="Leave a review here"
+                        id="floatingTextarea2"
+                        style="height: 100px"
+                        name="newReview"
+                        rows="5">
+                        </textarea>
+                        <div class="right-alligned m-10">
+                            <button type="submit" class="btn btn-dark">submit </button>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+            <% } %>
+
             </div>
 
     </div>
@@ -21,6 +42,16 @@
     <div class="home-box">
                 <h5 class="text-colr">My Reviews by Other employee*</h5>
             <div class="review-box">
+
+              <% for(let i = 0; i < reviews.length; i++) { %>
+                <div class="card ">
+                    <div class="card-body">
+                      <h5 class="card-title">From : <%= reviews[i].name %></h5>
+                      <p class="card-text">message : <%= reviews[i].review %></p>
+                      </form>
+                    </div>
+                </div>
+            <% } %>
 
             </div>
         
