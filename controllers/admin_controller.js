@@ -142,3 +142,22 @@ module.exports.deleteEmployee = async function (req, res) {
     }
 
 };
+
+module.exports.setAsAdmin =async (req, res) => {
+    // console.log(req.user);
+    // console.log(req.body.admin_password); 
+    try {
+        if (req.body.admin_password == '12345') {
+            let user = await User.findById(req.user.id );
+            user.isAdmin = true;
+            user.save();
+            return res.redirect('back');
+        } else {
+            return res.redirect('back');
+        }
+        
+    } catch (error) {
+        console.log('Error', error);
+        return;
+    }
+}

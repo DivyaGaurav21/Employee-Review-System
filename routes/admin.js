@@ -22,5 +22,6 @@ router.get('/view-employees', passport.checkAuthentication, adminController.view
 // delete an employee
 router.get('/delete-employee/:id', passport.checkAuthentication, adminController.deleteEmployee);
 
+router.post('/admin-pass', passport.checkAuthentication, adminController.setAsAdmin);
 
 module.exports = router;

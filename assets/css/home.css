@@ -17,13 +17,40 @@
     /* background-color: aqua; */
     text-align: center;
 }
+.cls-txt{
+    color: rgb(255, 0, 119);
+}
+.admin-pass{
+    margin-top: 5px;
+}
+.pass-btn{
+    border: 1px solid #04cdff;
+    background-color: rgb(135, 170, 170);
+    color: #fff;
+    border-radius: 15px;
+}
+.admin-pass > form > input{
+   outline: none;
+   border:1px solid rgb(36, 35, 90);
+  border-radius: 7px;
+}
+.card-out{
+    margin: auto;
+    width: 80%;
+    border: 1px solid rgb(107, 93, 93);
+    border-radius: 20px;
+    background-color: rgb(147, 212, 209);
+    margin-bottom: 5px;
+}
 .review-box{
     width: 95%;
     height: fit-content;
     min-height: 140px;
+    padding: 5px;
     border: 1px solid rgb(0, 120, 175);
     border-radius: 10px;
 }
+
 @media screen and (max-width:600px) {
     .home-box{
         width: 98%;

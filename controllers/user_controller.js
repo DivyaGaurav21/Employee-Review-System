@@ -98,7 +98,7 @@ module.exports.home =async (req, res) => {
         let reviews = [];
 
         for (let i = 0; i < review.length; i++){
-            let x = await User.findById(review[i].RecievedReviewfrom);
+            let x = await User.findById(review[i].reviewed);
 
             let curr_review = {
                 name: x.name,

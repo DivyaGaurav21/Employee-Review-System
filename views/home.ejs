@@ -1,6 +1,14 @@
 
 <link rel="stylesheet" href="/css/home.css">
 <div id="body-container">
+   <%if(!locals.user.isAdmin){%>
+        <div class="admin-pass">
+        <form action="/admin/admin-pass" method="POST">
+            <input type="password" name="admin_password" placeholder="admin password">
+            <button type="submit" class="pass-btn">Enter as Admin</button>
+        </form>
+   </div>
+    <%}%>
 
     <div class="home-box">
         <i class="text-colr">the Application involves creating a database to store information about employees and reviews, building a web interface to create and view reviews, and implementing access controls to ensure that only the administrator can see all reviews and give permission to employees to view their own reviews.</i>
@@ -17,7 +25,7 @@
                 <% for(let r of recipients){ %> 
                 <div class="card no-b ">
                     <div class="card-body">
-                      <h5 class="card-title">To:<%= r.name %></h5>
+                      <h5 class="card-title text-colr">To:<%= r.name %></h5>
                       <form action="/reviews/newReview/<%= r._id %>" method="get">
                         <textarea
                         class="form-control"
@@ -28,7 +36,7 @@
                         rows="5">
                         </textarea>
                         <div class="right-alligned m-10">
-                            <button type="submit" class="btn btn-dark">submit </button>
+                            <button type="submit" class="btn btn-info mt-2">submit </button>
                         </div>
                       </form>
                     </div>
@@ -44,10 +52,10 @@
             <div class="review-box">
 
               <% for(let i = 0; i < reviews.length; i++) { %>
-                <div class="card ">
-                    <div class="card-body">
-                      <h5 class="card-title">From : <%= reviews[i].name %></h5>
-                      <p class="card-text">message : <%= reviews[i].review %></p>
+                <div class="card-out">
+                    <div class="in-card">
+                      <h5 class="cls-txt">message : <%= reviews[i].review %></h5>
+                      <p class="cls-txt">from : <%= reviews[i].name %></p>
                       </form>
                     </div>
                 </div>

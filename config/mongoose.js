@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 
+// mongoose.connect('mongodb+srv://divyagaurav:divyagaurav@cluster1.rj5rnxe.mongodb.net/?retryWrites=true&w=majority');
 mongoose.connect('mongodb://localhost/employee-review-system');
 
 const db = mongoose.connection;
