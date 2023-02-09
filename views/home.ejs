@@ -21,9 +21,10 @@
                 <small class="small-text text-colr"><i>this task is assigned by admin</i></small>
                 </h5>
             <div class="review-box">
-               <%if(recipients.length > 0){%>
+               
                 <% for(let r of recipients){ %> 
-                <div class="card no-b ">
+               <%if(r!= null){%>
+                   <div class="card no-b ">
                     <div class="card-body">
                       <h5 class="card-title text-colr">To:<%= r.name %></h5>
                       <form action="/reviews/newReview/<%= r._id %>" method="get">
@@ -41,8 +42,8 @@
                       </form>
                     </div>
                 </div>
+                <%}%>
             <% } %>
-             <%}%>
 
             </div>
 

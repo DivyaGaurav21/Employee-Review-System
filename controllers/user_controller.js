@@ -94,7 +94,7 @@ module.exports.home =async (req, res) => {
             let x = await User.findById(user.userToReview[i]);
             recipients.push(x);
         }
-
+        console.log(recipients)
         let reviews = [];
 
         for (let i = 0; i < review.length; i++){
