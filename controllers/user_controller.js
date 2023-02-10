@@ -99,13 +99,15 @@ module.exports.home =async (req, res) => {
 
         for (let i = 0; i < review.length; i++){
             let x = await User.findById(review[i].reviewed);
+            if (x != null) {
 
-            let curr_review = {
-                name: x.name,
-                review: review[i].review,
-                updated: review[i].updatedAt,
-            };
-            reviews.push(curr_review);
+                let curr_review = {
+                    name: x.name,
+                    review: review[i].review,
+                    updated: review[i].updatedAt,
+                };
+                reviews.push(curr_review);
+        }
         }
         res.render('home', {
             title: "Home || ERS",
