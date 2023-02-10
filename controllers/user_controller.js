@@ -106,7 +106,7 @@ module.exports.home =async (req, res) => {
                     review: review[i].review,
                     updated: review[i].updatedAt,
                 };
-                reviews.push(curr_review);
+                reviews.push(curr_review)
         }
         }
         res.render('home', {
