@@ -1,3 +1,4 @@
+<!-- header of ejs layout  -->
 <link rel="stylesheet" href="/css/nav.css">
 <nav class="nav d-flex justify-content-between align-items-center">
 
@@ -5,6 +6,7 @@
         <a class="nav-link active text-light" aria-current="page" href="/"><i>Employee Review System</i></a>
     </div>
 
+    <!-- admin or general employee interface depends on local.user -->
     <div class="d-flex justify-content-between align-items-center">
 
         <% if(locals.user && !locals.user.isAdmin){ %>

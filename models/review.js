@@ -1,5 +1,7 @@
+// use mongoose library for mongodb database 
 const mongoose = require('mongoose');
 
+// making a review schema 
 const reviewSchema = new mongoose.Schema({
 
     review: {
@@ -20,8 +22,7 @@ const reviewSchema = new mongoose.Schema({
 }, {
     timestamps: true,
 });
-
-
+// review model for exporting 
 const Review = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;

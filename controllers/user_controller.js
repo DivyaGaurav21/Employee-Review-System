@@ -1,6 +1,8 @@
+//------------ including User and Review Models ------------//
 const User = require('../models/user')
 const Review = require('../models/review')
 
+//--------- login request end point action------------------//
 module.exports.login = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect('/');
@@ -9,6 +11,8 @@ module.exports.login = (req, res) => {
         title: "Login || ERS"
     });
 }
+
+//-----------register request end point controller action------------//
 module.exports.register = (req, res) => {
     if (req.isAuthenticated() && req.user.isAdmin) {
         return res.render('register', {
@@ -77,17 +81,17 @@ module.exports.destroySession = (req, res , done) => {
     return res.redirect('/users/login');
 }
 
-
+// --------------home controller for render homoe --------------//
 module.exports.home =async (req, res) => {
     try {
         if (!req.isAuthenticated()) {
             console.log("not logged in");
             return res.redirect('/users/login');
         }
-
+        // first find user and review //
         let user = await User.findById(req.user.id);
         let review = await Review.find({ reviewer: req.user.id });
-
+        //   initlize empty array //
         let recipients = [];
 
         for (let i = 0; i < user.userToReview.length; i++){
@@ -95,6 +99,7 @@ module.exports.home =async (req, res) => {
             recipients.push(x);
         }
         console.log(recipients)
+        // initialize review as empty array //
         let reviews = [];
 
         for (let i = 0; i < review.length; i++){
@@ -109,6 +114,7 @@ module.exports.home =async (req, res) => {
                 reviews.push(curr_review)
         }
         }
+        // rendering response //
         res.render('home', {
             title: "Home || ERS",
             recipients: recipients,

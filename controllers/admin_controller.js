@@ -1,8 +1,9 @@
+// -----------Include User and Review models -------------//
 const User = require("../models/user");
 const Review = require("../models/review");
 
 
-
+//-------------- Renders the admin page-------------------//
 module.exports.adminPage = async function (req, res) {
     if (!req.isAuthenticated()) {
         return res.redirect('/users/login');
@@ -34,7 +35,7 @@ module.exports.adminPage = async function (req, res) {
     }
 };
 
-
+//-------------Sets reviewers for employees------------------------//
 module.exports.setReviewrs = async (req, res) => {
     try {
         if (!req.isAuthenticated()) {
@@ -65,7 +66,7 @@ module.exports.setReviewrs = async (req, res) => {
 }
 
 
-// make new admin admin to an employee
+//----------- make new admin admin to an employee-----------------------//
 module.exports.newAdmin = async function (req, res) {
     try {
         if (!req.isAuthenticated()) {
@@ -97,7 +98,7 @@ module.exports.newAdmin = async function (req, res) {
 };
 
 
-// views employees
+//----------------------views employees-----------------------------//
 module.exports.viewEmployees = async function (req, res) {
     try {
         if (req.isAuthenticated()) {
@@ -126,7 +127,7 @@ module.exports.viewEmployees = async function (req, res) {
 
 
 
-// delete employee
+//------------------- delete employee-----------------------------//
 module.exports.deleteEmployee = async function (req, res) {
     try {
 
@@ -143,6 +144,7 @@ module.exports.deleteEmployee = async function (req, res) {
 
 };
 
+// ---------set Admin --------------//
 module.exports.setAsAdmin =async (req, res) => {
     // console.log(req.user);
     // console.log(req.body.admin_password); 

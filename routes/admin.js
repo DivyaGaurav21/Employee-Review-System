@@ -1,8 +1,10 @@
 
 const express = require('express');
+// use express router 
 const router = express.Router();
+// include passport library 
 const passport = require('passport');
-
+// include adminController 
 const adminController = require('../controllers/admin_controller');
 
 // get admin page
@@ -22,6 +24,7 @@ router.get('/view-employees', passport.checkAuthentication, adminController.view
 // delete an employee
 router.get('/delete-employee/:id', passport.checkAuthentication, adminController.deleteEmployee);
 
+// this end point for making new admin 
 router.post('/admin-pass', passport.checkAuthentication, adminController.setAsAdmin);
 
 module.exports = router;

@@ -35,7 +35,7 @@ app.set('views', './views');
 
 app.use(cookieParser());
 
-
+// _____________________using express layout________________//
 app.use(expressLayouts);
 
 //___to render css and script in deciplined manner in DOM__//
@@ -66,13 +66,17 @@ app.use(session({
 }))
 
 
-
+// ________________________use passport___________________________________//
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
+
+// ________________router root setup____________________________________//
 app.use('/', require('./routes/index'));
 
+
+// _________________listing on port_____________________________________//
 app.listen(port, (err) => {
     if (err) {
         console.log(`error in running on server ${err}`);

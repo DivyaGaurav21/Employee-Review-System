@@ -1,7 +1,8 @@
+// include mongoose for mongodb operation 
 const mongoose = require('mongoose');
 
+// crating user schema for mongo db 
 const userSchema = new mongoose.Schema({
-
     name: {
         type: String,
         required: true,
@@ -36,7 +37,7 @@ const userSchema = new mongoose.Schema({
     timestamps: true,
 });
 
-
+// user for exporting 
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

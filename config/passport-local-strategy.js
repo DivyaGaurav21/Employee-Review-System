@@ -1,4 +1,6 @@
+// importing passport library //
 const passport = require('passport');
+// LocalStradegy of passport //
 const LocalStrategy = require('passport-local').Strategy;
 
 
