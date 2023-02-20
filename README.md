@@ -27,6 +27,11 @@ It is easy for employees to use and helps create a positive work environment.
   $ npm install
   $ nodemon index.js or npm start
   ```
+  4. Admin PassWord(important) 
+  ```
+  12345
+  
+  ```
 
  
   ## Features
@@ -99,5 +104,6 @@ who enjoye and love to work on web developement and learning new technology in m
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://divyagaurav21.github.io/my-portfolio/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/divya-gaurav-917889215/)
+
 
 
